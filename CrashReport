@@ -1,0 +1,629 @@
+-------------------------------------
+Translated Report (Full Report Below)
+-------------------------------------
+
+Process:               Live [46502]
+Path:                  /Applications/Ableton Live 11 Suite.app/Contents/MacOS/Live
+Identifier:            com.ableton.live
+Version:               11.2.7 (2022-12-08_2509d781e7) (11.2.7 (2022-12-08_2509d781e7))
+Code Type:             ARM-64 (Native)
+Parent Process:        launchd [1]
+User ID:               501
+
+Date/Time:             2023-02-13 17:24:56.2671 -0500
+OS Version:            macOS 13.0 (22A380)
+Report Version:        12
+Anonymous UUID:        AEE41D72-39BC-0663-85E9-560836642827
+
+Sleep/Wake UUID:       2D2D41BA-6B9D-4ECF-9C25-E70E07036FAA
+
+Time Awake Since Boot: 61000 seconds
+Time Since Wake:       5036 seconds
+
+System Integrity Protection: enabled
+
+Crashed Thread:        2
+
+Exception Type:        EXC_BAD_ACCESS (SIGSEGV)
+Exception Codes:       KERN_INVALID_ADDRESS at 0x3b0457c8059267d0 -> 0x000057c8059267d0 (possible pointer authentication failure)
+Exception Codes:       0x0000000000000001, 0x3b0457c8059267d0
+
+Termination Reason:    Namespace SIGNAL, Code 11 Segmentation fault: 11
+Terminating Process:   exc handler [46502]
+
+VM Region Info: 0x57c8059267d0 is not in any region.  Bytes after previous region: 96035562219473  Bytes before following region: 9036517709872
+      REGION TYPE                    START - END         [ VSIZE] PRT/MAX SHRMOD  REGION DETAIL
+      commpage (reserved)        1000000000-7000000000   [384.0G] ---/--- SM=NUL  ...(unallocated)
+--->  GAP OF 0x5f9000000000 BYTES
+      MALLOC_NANO              600000000000-600008000000 [128.0M] rw-/rwx SM=PRV  
+
+Thread 0:: MainThread Dispatch queue: com.apple.main-thread
+0   libsystem_kernel.dylib        	       0x18899adf0 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x1889ac8d8 mach_msg2_internal + 80
+2   libsystem_kernel.dylib        	       0x1889a3638 mach_msg_overwrite + 540
+3   libsystem_kernel.dylib        	       0x18899b16c mach_msg + 24
+4   CoreFoundation                	       0x188ab9bdc __CFRunLoopServiceMachPort + 160
+5   CoreFoundation                	       0x188ab84c8 __CFRunLoopRun + 1232
+6   CoreFoundation                	       0x188ab78a4 CFRunLoopRunSpecific + 612
+7   HIToolbox                     	       0x19212b3bc RunCurrentEventLoopInMode + 292
+8   HIToolbox                     	       0x19212b200 ReceiveNextEventCommon + 672
+9   HIToolbox                     	       0x19212af48 _BlockUntilNextEventMatchingListInModeWithFilter + 72
+10  AppKit                        	       0x18bd10630 _DPSNextEvent + 632
+11  AppKit                        	       0x18bd0f7c0 -[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:] + 728
+12  AppKit                        	       0x18bd03bf0 -[NSApplication run] + 464
+13  Live                          	       0x103c9e030 0x102d84000 + 15835184
+14  dyld                          	       0x1886afe50 start + 2544
+
+Thread 1:
+0   libsystem_pthread.dylib       	       0x1889d4e18 start_wqthread + 0
+
+Thread 2 Crashed:
+0   libdispatch.dylib             	       0x1888623d4 _dispatch_cache_cleanup + 20
+1   libdispatch.dylib             	       0x1888623dc _dispatch_cache_cleanup + 28
+2   libsystem_pthread.dylib       	       0x1889d79ec _pthread_tsd_cleanup + 620
+3   libsystem_pthread.dylib       	       0x1889da760 _pthread_exit + 84
+4   libsystem_pthread.dylib       	       0x1889d76c4 _pthread_wqthread_exit + 76
+5   libsystem_pthread.dylib       	       0x1889d6188 _pthread_wqthread + 424
+6   libsystem_pthread.dylib       	       0x1889d4e20 start_wqthread + 8
+
+Thread 3:: NetIoThread
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103c5bc54 void ableton::utility::detail::CallbackTypes<ANetIoThread, void, TUserData>::CallMemberFunc<&(ANetIoThread::Main(TUserData))>(void*, TUserData) + 92
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 4:
+0   libsystem_kernel.dylib        	       0x18899adf0 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x1889ac8d8 mach_msg2_internal + 80
+2   libsystem_kernel.dylib        	       0x1889a3638 mach_msg_overwrite + 540
+3   libsystem_kernel.dylib        	       0x18899b16c mach_msg + 24
+4   CoreMIDI                      	       0x19fca383c XServerMachPort::ReceiveMessage(int&, void*, int&) + 104
+5   CoreMIDI                      	       0x19fcd77a8 MIDIProcess::MIDIInPortThread::Run() + 164
+6   CoreMIDI                      	       0x19fcbebd8 XThread::RunHelper(void*) + 48
+7   CoreMIDI                      	       0x19fcbfef0 CAPThread::Entry(CAPThread*) + 92
+8   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+9   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 5:: FileThread
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x1043d85dc 0x102d84000 + 23414236
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 6:: IPC Channel Reader
+0   libsystem_kernel.dylib        	       0x1889a3334 poll + 8
+1   Live                          	       0x105accfa0 0x102d84000 + 47484832
+2   Live                          	       0x103c782f4 0x102d84000 + 15680244
+3   Live                          	       0x103c78868 0x102d84000 + 15681640
+4   Live                          	       0x103c7a15c 0x102d84000 + 15688028
+5   Live                          	       0x103c79c38 0x102d84000 + 15686712
+6   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+7   Live                          	       0x103840100 0x102d84000 + 11256064
+8   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+9   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 7:: caulk.messenger.shared:17
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   caulk                         	       0x191e52cfc caulk::mach::semaphore::wait_or_error() + 28
+2   caulk                         	       0x191e35634 caulk::concurrent::details::worker_thread::run() + 56
+3   caulk                         	       0x191e35278 void* caulk::thread_proxy<std::__1::tuple<caulk::thread::attributes, void (caulk::concurrent::details::worker_thread::*)(), std::__1::tuple<caulk::concurrent::details::worker_thread*> > >(void*) + 96
+4   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+5   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 8:
+0   libsystem_kernel.dylib        	       0x1889a0e98 kevent + 8
+1   Live                          	       0x105ae9a3c 0x102d84000 + 47602236
+2   Live                          	       0x105aca468 0x102d84000 + 47473768
+3   Live                          	       0x105ae94b0 0x102d84000 + 47600816
+4   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+5   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 9:: com.apple.NSEventThread
+0   libsystem_kernel.dylib        	       0x18899adf0 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x1889ac8d8 mach_msg2_internal + 80
+2   libsystem_kernel.dylib        	       0x1889a3638 mach_msg_overwrite + 540
+3   libsystem_kernel.dylib        	       0x18899b16c mach_msg + 24
+4   CoreFoundation                	       0x188ab9bdc __CFRunLoopServiceMachPort + 160
+5   CoreFoundation                	       0x188ab84c8 __CFRunLoopRun + 1232
+6   CoreFoundation                	       0x188ab78a4 CFRunLoopRunSpecific + 612
+7   AppKit                        	       0x18be3a248 _NSEventThread + 172
+8   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+9   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 10:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 11:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 12:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 13:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 14:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 15:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 16:: AudioCalc
+0   libsystem_kernel.dylib        	       0x18899ad6c semaphore_wait_trap + 8
+1   Live                          	       0x10382c6d4 0x102d84000 + 11175636
+2   Live                          	       0x103f49200 0x102d84000 + 18633216
+3   Live                          	       0x10383f5e8 0x102d84000 + 11253224
+4   Live                          	       0x103840100 0x102d84000 + 11256064
+5   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+6   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 17:: com.apple.audio.IOThread.client
+0   libsystem_kernel.dylib        	       0x18899adf0 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x1889ac8d8 mach_msg2_internal + 80
+2   libsystem_kernel.dylib        	       0x1889a3638 mach_msg_overwrite + 540
+3   libsystem_kernel.dylib        	       0x18899b16c mach_msg + 24
+4   CoreAudio                     	       0x18add31bc HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int) + 104
+5   CoreAudio                     	       0x18acac688 HALC_ProxyIOContext::IOWorkLoop() + 3316
+6   CoreAudio                     	       0x18acab38c invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int) + 100
+7   CoreAudio                     	       0x18ae2d37c HALB_IOThread::Entry(void*) + 88
+8   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+9   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 18:: com.apple.audio.IOThread.client
+0   libsystem_kernel.dylib        	       0x18899adf0 mach_msg2_trap + 8
+1   libsystem_kernel.dylib        	       0x1889ac8d8 mach_msg2_internal + 80
+2   libsystem_kernel.dylib        	       0x1889a3638 mach_msg_overwrite + 540
+3   libsystem_kernel.dylib        	       0x18899b16c mach_msg + 24
+4   CoreAudio                     	       0x18add31bc HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int) + 104
+5   CoreAudio                     	       0x18acac688 HALC_ProxyIOContext::IOWorkLoop() + 3316
+6   CoreAudio                     	       0x18acab38c invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int) + 100
+7   CoreAudio                     	       0x18ae2d37c HALB_IOThread::Entry(void*) + 88
+8   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+9   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 19:: CVDisplayLink
+0   libsystem_kernel.dylib        	       0x18899e5e4 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1889da664 _pthread_cond_wait + 1276
+2   CoreVideo                     	       0x1908ad9bc CVDisplayLink::waitUntil(unsigned long long) + 324
+3   CoreVideo                     	       0x1908aca8c CVDisplayLink::runIOThread() + 504
+4   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+5   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 20:: JUCE Timer
+0   libsystem_kernel.dylib        	       0x18899e5e4 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1889da638 _pthread_cond_wait + 1232
+2   MaxPlugLib                    	       0x1284f9e00 juce::WaitableEvent::wait(int) const + 208
+3   MaxPlugLib                    	       0x128524b14 juce::Timer::TimerThread::run() + 132
+4   MaxPlugLib                    	       0x1284fa7e0 juce::Thread::threadEntryPoint() + 304
+5   MaxPlugLib                    	       0x12850d394 threadEntryProc + 32
+6   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+7   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 21:: tcp_listener
+0   libsystem_kernel.dylib        	       0x1889a3308 __accept + 8
+1   MaxPlugLib                    	       0x1284edb14 juce::StreamingSocket::waitForNextConnection() const + 88
+2   MaxPlugLib                    	       0x1283c5260 tcpconnection_listenthread(_tcpconnection*) + 168
+3   MaxPlugLib                    	       0x12830c8f4 systhread_threadproc + 212
+4   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+5   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 22:
+0   libsystem_pthread.dylib       	       0x1889d4e18 start_wqthread + 0
+
+Thread 23:: JUCE Timer
+0   libsystem_kernel.dylib        	       0x18899e5e4 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1889da638 _pthread_cond_wait + 1232
+2   libc++.1.dylib                	       0x188927b60 std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 100
+3   NewProject                    	       0x2c52674e0 std::__1::cv_status std::__1::condition_variable::wait_for<long long, std::__1::ratio<1l, 1000000000l> >(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > const&) + 332 (__mutex_base:463)
+4   NewProject                    	       0x2c52671a8 void std::__1::condition_variable::__do_timed_wait<std::__1::chrono::steady_clock>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >) + 104 (__mutex_base:518)
+5   NewProject                    	       0x2c5266f50 std::__1::cv_status std::__1::condition_variable::wait_until<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > > const&) + 132 (__mutex_base:421)
+6   NewProject                    	       0x2c52a1278 bool std::__1::condition_variable::wait_until<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> >, juce::WaitableEvent::wait(int) const::$_18>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > > const&, juce::WaitableEvent::wait(int) const::$_18) + 72 (__mutex_base:433)
+7   NewProject                    	       0x2c521b24c bool std::__1::condition_variable::wait_for<long long, std::__1::ratio<1l, 1000l>, juce::WaitableEvent::wait(int) const::$_18>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000l> > const&, juce::WaitableEvent::wait(int) const::$_18) + 132 (__mutex_base:477)
+8   NewProject                    	       0x2c51ea70c juce::WaitableEvent::wait(int) const + 192 (juce_WaitableEvent.cpp:43)
+9   NewProject                    	       0x2c51ec7ec juce::Thread::wait(int) const + 36 (juce_Thread.cpp:290)
+10  NewProject                    	       0x2c52d2e58 juce::Timer::TimerThread::run() + 432 (juce_Timer.cpp:89)
+11  NewProject                    	       0x2c51eb65c juce::Thread::threadEntryPoint() + 332 (juce_Thread.cpp:98)
+12  NewProject                    	       0x2c51ebb10 juce::juce_threadEntryPoint(void*) + 24 (juce_Thread.cpp:120)
+13  NewProject                    	       0x2c5262e84 juce::Thread::createNativeThread(juce::Thread::Priority)::$_16::operator()(void*) const + 44 (juce_mac_Threads.mm:82)
+14  NewProject                    	       0x2c5262e4c juce::Thread::createNativeThread(juce::Thread::Priority)::$_16::__invoke(void*) + 28 (juce_mac_Threads.mm:76)
+15  libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+16  libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 24:: CVDisplayLink
+0   libsystem_kernel.dylib        	       0x18899e5e4 __psynch_cvwait + 8
+1   libsystem_pthread.dylib       	       0x1889da664 _pthread_cond_wait + 1276
+2   CoreVideo                     	       0x1908ad9bc CVDisplayLink::waitUntil(unsigned long long) + 324
+3   CoreVideo                     	       0x1908aca8c CVDisplayLink::runIOThread() + 504
+4   libsystem_pthread.dylib       	       0x1889da06c _pthread_start + 148
+5   libsystem_pthread.dylib       	       0x1889d4e2c thread_start + 8
+
+Thread 25:
+0   libsystem_pthread.dylib       	       0x1889d4e18 start_wqthread + 0
+
+
+Thread 2 crashed with ARM Thread State (64-bit):
+    x0: 0x3b0457c8059267c0   x1: 0x0000600005997a40   x2: 0x0000000000000001   x3: 0x0000000000000000
+    x4: 0x0000000000064004   x5: 0xffffffffffffffff   x6: 0x0000000000000000   x7: 0x0000000000000000
+    x8: 0x0000000000000100   x9: 0x0000000000000008  x10: 0x0000000000000000  x11: 0x00000000000007fb
+   x12: 0x00000000123ffffc  x13: 0x00000000000007fd  x14: 0x00000000124000ea  x15: 0x00000000123ffffc
+   x16: 0x00000000000000ea  x17: 0x0000000012400000  x18: 0x0000000000000000  x19: 0x3b0457c8059267c0
+   x20: 0x0000000000000000  x21: 0x000000016d2a78e0  x22: 0x00000001e40b0038  x23: 0x000000016d2a74c8
+   x24: 0x000000016d2a7130  x25: 0x00000001e40ac000  x26: 0x000000000000000c  x27: 0x0000000000000000
+   x28: 0x0000000000000000   fp: 0x000000016d2a6f10   lr: 0x394d8001888623dc
+    sp: 0x000000016d2a6f00   pc: 0x00000001888623d4 cpsr: 0x40001000
+   far: 0x3b0457c8059267d0  esr: 0x92000004 (Data Abort) byte read Translation fault
+
+Binary Images:
+       0x18899a000 -        0x1889d2ffb libsystem_kernel.dylib (*) <6d6644d3-3db3-34c4-b1e3-c675ec5360f0> /usr/lib/system/libsystem_kernel.dylib
+       0x188a38000 -        0x188f0ffff com.apple.CoreFoundation (6.9) <f4ff83fc-e62c-30b4-b3a9-876c8a1fd595> /System/Library/Frameworks/CoreFoundation.framework/Versions/A/CoreFoundation
+       0x1920f9000 -        0x19242cfff com.apple.HIToolbox (2.1.1) <02b9797f-c47d-30b7-b7b0-802d0d26f31c> /System/Library/Frameworks/Carbon.framework/Versions/A/Frameworks/HIToolbox.framework/Versions/A/HIToolbox
+       0x18bcd7000 -        0x18cbdefff com.apple.AppKit (6.9) <af9f6891-70ad-3c26-af08-b747344892d2> /System/Library/Frameworks/AppKit.framework/Versions/C/AppKit
+       0x102d84000 -        0x106de3fff com.ableton.live (11.2.7 (2022-12-08_2509d781e7)) <52182ddd-487e-31f7-83a8-233e52d7b9d4> /Applications/Ableton Live 11 Suite.app/Contents/MacOS/Live
+       0x1886aa000 -        0x1887344af dyld (*) <1f56ab4e-f398-3a9c-bfba-fbbd17808963> /usr/lib/dyld
+       0x1889d3000 -        0x1889dfffb libsystem_pthread.dylib (*) <886caca0-5762-3640-8db2-3fa3b911c062> /usr/lib/system/libsystem_pthread.dylib
+       0x18884f000 -        0x188896fff libdispatch.dylib (*) <40c9c98c-00d6-3e8e-9ad3-2ed6cf0d0cfe> /usr/lib/system/libdispatch.dylib
+       0x19fc91000 -        0x19fd03fff com.apple.audio.midi.CoreMIDI (2.0) <c145596b-cf7a-3936-9393-de2b54049197> /System/Library/Frameworks/CoreMIDI.framework/Versions/A/CoreMIDI
+       0x191e33000 -        0x191e5cfff com.apple.audio.caulk (1.0) <445d1341-52c5-3468-ba85-f01410317744> /System/Library/PrivateFrameworks/caulk.framework/Versions/A/caulk
+       0x18aad2000 -        0x18b1b1fff com.apple.audio.CoreAudio (5.0) <ad0eb60a-ba0d-3e1d-9a5b-ddc59e71d77d> /System/Library/Frameworks/CoreAudio.framework/Versions/A/CoreAudio
+       0x1908aa000 -        0x19090bfff com.apple.CoreVideo (1.8) <fb6c73bd-5e1f-3e88-b952-caaaed8960c9> /System/Library/Frameworks/CoreVideo.framework/Versions/A/CoreVideo
+       0x128000000 -        0x128b87fff com.cycling.MaxPlugLib ( (666)) <caaabb28-c220-39c2-a66a-10e378101daf> /Applications/Ableton Live 11 Suite.app/Contents/App-Resources/Max/Max.app/Contents/Resources/C74/support/MaxPlugLib.bundle/Contents/MacOS/MaxPlugLib
+       0x18891b000 -        0x188981ff3 libc++.1.dylib (*) <ae8ea4b2-b8fd-33e3-a0af-0b7485ab97c0> /usr/lib/libc++.1.dylib
+       0x2c500c000 -        0x2c578ffff com.yourcompany.DonutDelay (1.0.0) <7686e8fd-a0df-3b16-aed4-d3525cce6b41> /Users/USER/Library/Audio/Plug-Ins/Components/NewProject.component/Contents/MacOS/NewProject
+               0x0 - 0xffffffffffffffff ??? (*) <00000000-0000-0000-0000-000000000000> ???
+
+External Modification Summary:
+  Calls made by other processes targeting this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by this process:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+  Calls made by all processes on this machine:
+    task_for_pid: 0
+    thread_create: 0
+    thread_set_state: 0
+
+VM Region Summary:
+ReadOnly portion of Libraries: Total=1.5G resident=0K(0%) swapped_out_or_unallocated=1.5G(100%)
+Writable regions: Total=2.1G written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=2.1G(100%)
+
+                                VIRTUAL   REGION 
+REGION TYPE                        SIZE    COUNT (non-coalesced) 
+===========                     =======  ======= 
+Accelerate framework               256K        2 
+Activity Tracing                   256K        1 
+CG backing stores                 3520K        4 
+CG image                           272K       14 
+ColorSync                          624K       29 
+CoreAnimation                      240K       14 
+CoreGraphics                        32K        2 
+CoreServices                       624K        2 
+CoreUI image data                 2176K       15 
+Foundation                          16K        1 
+Image IO                           128K        8 
+Kernel Alloc Once                   32K        1 
+MALLOC                           834.5M      101 
+MALLOC guard page                  192K       10 
+MALLOC_LARGE (reserved)           27.0M        2         reserved VM address space (unallocated)
+MALLOC_MEDIUM (reserved)           1.0G       10         reserved VM address space (unallocated)
+MALLOC_NANO (reserved)           128.0M        1         reserved VM address space (unallocated)
+STACK GUARD                       56.4M       26 
+Stack                             21.3M       26 
+VM_ALLOCATE                       27.1M      123 
+VM_ALLOCATE (reserved)             288K        2         reserved VM address space (unallocated)
+__AUTH                            1778K      329 
+__AUTH_CONST                      23.5M      539 
+__CTF                               756        1 
+__DATA                            18.4M      577 
+__DATA_CONST                      37.6M      582 
+__DATA_DIRTY                      1909K      212 
+__FONT_DATA                        2352        1 
+__LINKEDIT                       824.1M       48 
+__OBJC_CONST                      4396K      299 
+__OBJC_RO                         65.1M        1 
+__OBJC_RW                         1981K        1 
+__TEXT                           705.8M      609 
+dyld private memory               1024K        3 
+mapped file                        1.2G       68 
+shared memory                      992K       21 
+===========                     =======  ======= 
+TOTAL                              4.9G     3685 
+TOTAL, minus reserved VM space     3.7G     3685 
+
+
+
+-----------
+Full Report
+-----------
+
+{"app_name":"Live","timestamp":"2023-02-13 17:24:56.00 -0500","app_version":"11.2.7 (2022-12-08_2509d781e7)","slice_uuid":"52182ddd-487e-31f7-83a8-233e52d7b9d4","build_version":"11.2.7 (2022-12-08_2509d781e7)","platform":1,"bundleID":"com.ableton.live","share_with_app_devs":0,"is_first_party":0,"bug_type":"309","os_version":"macOS 13.0 (22A380)","roots_installed":0,"name":"Live","incident_id":"52F1655A-0498-4857-A3A1-9B487A728F5A"}
+{
+  "uptime" : 61000,
+  "procRole" : "Foreground",
+  "version" : 2,
+  "userID" : 501,
+  "deployVersion" : 210,
+  "modelCode" : "MacBookPro18,3",
+  "coalitionID" : 3397,
+  "osVersion" : {
+    "train" : "macOS 13.0",
+    "build" : "22A380",
+    "releaseType" : "User"
+  },
+  "captureTime" : "2023-02-13 17:24:56.2671 -0500",
+  "incident" : "52F1655A-0498-4857-A3A1-9B487A728F5A",
+  "pid" : 46502,
+  "translated" : false,
+  "cpuType" : "ARM-64",
+  "roots_installed" : 0,
+  "bug_type" : "309",
+  "procLaunch" : "2023-02-13 17:24:19.6624 -0500",
+  "procStartAbsTime" : 1475942574043,
+  "procExitAbsTime" : 1476820902049,
+  "procName" : "Live",
+  "procPath" : "\/Applications\/Ableton Live 11 Suite.app\/Contents\/MacOS\/Live",
+  "bundleInfo" : {"CFBundleShortVersionString":"11.2.7 (2022-12-08_2509d781e7)","CFBundleVersion":"11.2.7 (2022-12-08_2509d781e7)","CFBundleIdentifier":"com.ableton.live"},
+  "storeInfo" : {"deviceIdentifierForVendor":"4AB25D75-AD94-5964-A47A-1032C34086F9","thirdParty":true},
+  "parentProc" : "launchd",
+  "parentPid" : 1,
+  "coalitionName" : "com.ableton.live",
+  "crashReporterKey" : "AEE41D72-39BC-0663-85E9-560836642827",
+  "wakeTime" : 5036,
+  "sleepWakeUUID" : "2D2D41BA-6B9D-4ECF-9C25-E70E07036FAA",
+  "sip" : "enabled",
+  "vmRegionInfo" : "0x57c8059267d0 is not in any region.  Bytes after previous region: 96035562219473  Bytes before following region: 9036517709872\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      commpage (reserved)        1000000000-7000000000   [384.0G] ---\/--- SM=NUL  ...(unallocated)\n--->  GAP OF 0x5f9000000000 BYTES\n      MALLOC_NANO              600000000000-600008000000 [128.0M] rw-\/rwx SM=PRV  ",
+  "exception" : {"codes":"0x0000000000000001, 0x3b0457c8059267d0","rawCodes":[1,4252620464743147472],"type":"EXC_BAD_ACCESS","signal":"SIGSEGV","subtype":"KERN_INVALID_ADDRESS at 0x3b0457c8059267d0 -> 0x000057c8059267d0 (possible pointer authentication failure)"},
+  "termination" : {"flags":0,"code":11,"namespace":"SIGNAL","indicator":"Segmentation fault: 11","byProc":"exc handler","byPid":46502},
+  "vmregioninfo" : "0x57c8059267d0 is not in any region.  Bytes after previous region: 96035562219473  Bytes before following region: 9036517709872\n      REGION TYPE                    START - END         [ VSIZE] PRT\/MAX SHRMOD  REGION DETAIL\n      commpage (reserved)        1000000000-7000000000   [384.0G] ---\/--- SM=NUL  ...(unallocated)\n--->  GAP OF 0x5f9000000000 BYTES\n      MALLOC_NANO              600000000000-600008000000 [128.0M] rw-\/rwx SM=PRV  ",
+  "extMods" : {"caller":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"system":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"targeted":{"thread_create":0,"thread_set_state":0,"task_for_pid":0},"warnings":0},
+  "faultingThread" : 2,
+  "threads" : [{"id":1088746,"name":"MainThread","queue":"com.apple.main-thread","frames":[{"imageOffset":3568,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":75992,"symbol":"mach_msg2_internal","symbolLocation":80,"imageIndex":0},{"imageOffset":38456,"symbol":"mach_msg_overwrite","symbolLocation":540,"imageIndex":0},{"imageOffset":4460,"symbol":"mach_msg","symbolLocation":24,"imageIndex":0},{"imageOffset":531420,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":160,"imageIndex":1},{"imageOffset":525512,"symbol":"__CFRunLoopRun","symbolLocation":1232,"imageIndex":1},{"imageOffset":522404,"symbol":"CFRunLoopRunSpecific","symbolLocation":612,"imageIndex":1},{"imageOffset":205756,"symbol":"RunCurrentEventLoopInMode","symbolLocation":292,"imageIndex":2},{"imageOffset":205312,"symbol":"ReceiveNextEventCommon","symbolLocation":672,"imageIndex":2},{"imageOffset":204616,"symbol":"_BlockUntilNextEventMatchingListInModeWithFilter","symbolLocation":72,"imageIndex":2},{"imageOffset":235056,"symbol":"_DPSNextEvent","symbolLocation":632,"imageIndex":3},{"imageOffset":231360,"symbol":"-[NSApplication(NSEvent) _nextEventMatchingEventMask:untilDate:inMode:dequeue:]","symbolLocation":728,"imageIndex":3},{"imageOffset":183280,"symbol":"-[NSApplication run]","symbolLocation":464,"imageIndex":3},{"imageOffset":15835184,"imageIndex":4},{"imageOffset":24144,"symbol":"start","symbolLocation":2544,"imageIndex":5}]},{"id":1088758,"frames":[{"imageOffset":7704,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"triggered":true,"id":1088766,"threadState":{"x":[{"value":4252620464743147456},{"value":105553210210880},{"value":1},{"value":0},{"value":409604},{"value":18446744073709551615},{"value":0},{"value":0},{"value":256},{"value":8},{"value":0},{"value":2043},{"value":306184188},{"value":2045},{"value":306184426},{"value":306184188},{"value":234},{"value":306184192},{"value":0},{"value":4252620464743147456},{"value":0},{"value":6126467296},{"value":8120893496,"symbolLocation":0,"symbol":"_pthread_keys"},{"value":6126466248},{"value":6126465328},{"value":8120877056,"symbolLocation":0,"symbol":"__pthread_head"},{"value":12},{"value":0},{"value":0}],"flavor":"ARM_THREAD_STATE64","lr":{"value":4129097177442427868},"cpsr":{"value":1073745920},"fp":{"value":6126464784},"sp":{"value":6126464768},"esr":{"value":2449473540,"description":"(Data Abort) byte read Translation fault"},"pc":{"value":6585459668,"matchesCrashFrame":1},"far":{"value":4252620464743147472}},"frames":[{"imageOffset":78804,"symbol":"_dispatch_cache_cleanup","symbolLocation":20,"imageIndex":7},{"imageOffset":78812,"symbol":"_dispatch_cache_cleanup","symbolLocation":28,"imageIndex":7},{"imageOffset":18924,"symbol":"_pthread_tsd_cleanup","symbolLocation":620,"imageIndex":6},{"imageOffset":30560,"symbol":"_pthread_exit","symbolLocation":84,"imageIndex":6},{"imageOffset":18116,"symbol":"_pthread_wqthread_exit","symbolLocation":76,"imageIndex":6},{"imageOffset":12680,"symbol":"_pthread_wqthread","symbolLocation":424,"imageIndex":6},{"imageOffset":7712,"symbol":"start_wqthread","symbolLocation":8,"imageIndex":6}]},{"id":1088778,"name":"NetIoThread","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":15563860,"symbol":"void ableton::utility::detail::CallbackTypes<ANetIoThread, void, TUserData>::CallMemberFunc<&(ANetIoThread::Main(TUserData))>(void*, TUserData)","symbolLocation":92,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088780,"frames":[{"imageOffset":3568,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":75992,"symbol":"mach_msg2_internal","symbolLocation":80,"imageIndex":0},{"imageOffset":38456,"symbol":"mach_msg_overwrite","symbolLocation":540,"imageIndex":0},{"imageOffset":4460,"symbol":"mach_msg","symbolLocation":24,"imageIndex":0},{"imageOffset":75836,"symbol":"XServerMachPort::ReceiveMessage(int&, void*, int&)","symbolLocation":104,"imageIndex":8},{"imageOffset":288680,"symbol":"MIDIProcess::MIDIInPortThread::Run()","symbolLocation":164,"imageIndex":8},{"imageOffset":187352,"symbol":"XThread::RunHelper(void*)","symbolLocation":48,"imageIndex":8},{"imageOffset":192240,"symbol":"CAPThread::Entry(CAPThread*)","symbolLocation":92,"imageIndex":8},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088790,"name":"FileThread","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":23414236,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088802,"name":"IPC Channel Reader","frames":[{"imageOffset":37684,"symbol":"poll","symbolLocation":8,"imageIndex":0},{"imageOffset":47484832,"imageIndex":4},{"imageOffset":15680244,"imageIndex":4},{"imageOffset":15681640,"imageIndex":4},{"imageOffset":15688028,"imageIndex":4},{"imageOffset":15686712,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088807,"name":"caulk.messenger.shared:17","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":130300,"symbol":"caulk::mach::semaphore::wait_or_error()","symbolLocation":28,"imageIndex":9},{"imageOffset":9780,"symbol":"caulk::concurrent::details::worker_thread::run()","symbolLocation":56,"imageIndex":9},{"imageOffset":8824,"symbol":"void* caulk::thread_proxy<std::__1::tuple<caulk::thread::attributes, void (caulk::concurrent::details::worker_thread::*)(), std::__1::tuple<caulk::concurrent::details::worker_thread*> > >(void*)","symbolLocation":96,"imageIndex":9},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088815,"frames":[{"imageOffset":28312,"symbol":"kevent","symbolLocation":8,"imageIndex":0},{"imageOffset":47602236,"imageIndex":4},{"imageOffset":47473768,"imageIndex":4},{"imageOffset":47600816,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088826,"name":"com.apple.NSEventThread","frames":[{"imageOffset":3568,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":75992,"symbol":"mach_msg2_internal","symbolLocation":80,"imageIndex":0},{"imageOffset":38456,"symbol":"mach_msg_overwrite","symbolLocation":540,"imageIndex":0},{"imageOffset":4460,"symbol":"mach_msg","symbolLocation":24,"imageIndex":0},{"imageOffset":531420,"symbol":"__CFRunLoopServiceMachPort","symbolLocation":160,"imageIndex":1},{"imageOffset":525512,"symbol":"__CFRunLoopRun","symbolLocation":1232,"imageIndex":1},{"imageOffset":522404,"symbol":"CFRunLoopRunSpecific","symbolLocation":612,"imageIndex":1},{"imageOffset":1454664,"symbol":"_NSEventThread","symbolLocation":172,"imageIndex":3},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088842,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088843,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088844,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088845,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088846,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088847,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088848,"name":"AudioCalc","frames":[{"imageOffset":3436,"symbol":"semaphore_wait_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":11175636,"imageIndex":4},{"imageOffset":18633216,"imageIndex":4},{"imageOffset":11253224,"imageIndex":4},{"imageOffset":11256064,"imageIndex":4},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088849,"name":"com.apple.audio.IOThread.client","frames":[{"imageOffset":3568,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":75992,"symbol":"mach_msg2_internal","symbolLocation":80,"imageIndex":0},{"imageOffset":38456,"symbol":"mach_msg_overwrite","symbolLocation":540,"imageIndex":0},{"imageOffset":4460,"symbol":"mach_msg","symbolLocation":24,"imageIndex":0},{"imageOffset":3150268,"symbol":"HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int)","symbolLocation":104,"imageIndex":10},{"imageOffset":1943176,"symbol":"HALC_ProxyIOContext::IOWorkLoop()","symbolLocation":3316,"imageIndex":10},{"imageOffset":1938316,"symbol":"invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int)","symbolLocation":100,"imageIndex":10},{"imageOffset":3519356,"symbol":"HALB_IOThread::Entry(void*)","symbolLocation":88,"imageIndex":10},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088857,"name":"com.apple.audio.IOThread.client","frames":[{"imageOffset":3568,"symbol":"mach_msg2_trap","symbolLocation":8,"imageIndex":0},{"imageOffset":75992,"symbol":"mach_msg2_internal","symbolLocation":80,"imageIndex":0},{"imageOffset":38456,"symbol":"mach_msg_overwrite","symbolLocation":540,"imageIndex":0},{"imageOffset":4460,"symbol":"mach_msg","symbolLocation":24,"imageIndex":0},{"imageOffset":3150268,"symbol":"HALB_MachPort::SendSimpleMessageWithSimpleReply(unsigned int, unsigned int, int, int&, bool, unsigned int)","symbolLocation":104,"imageIndex":10},{"imageOffset":1943176,"symbol":"HALC_ProxyIOContext::IOWorkLoop()","symbolLocation":3316,"imageIndex":10},{"imageOffset":1938316,"symbol":"invocation function for block in HALC_ProxyIOContext::HALC_ProxyIOContext(unsigned int, unsigned int)","symbolLocation":100,"imageIndex":10},{"imageOffset":3519356,"symbol":"HALB_IOThread::Entry(void*)","symbolLocation":88,"imageIndex":10},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088889,"name":"CVDisplayLink","frames":[{"imageOffset":17892,"symbol":"__psynch_cvwait","symbolLocation":8,"imageIndex":0},{"imageOffset":30308,"symbol":"_pthread_cond_wait","symbolLocation":1276,"imageIndex":6},{"imageOffset":14780,"symbol":"CVDisplayLink::waitUntil(unsigned long long)","symbolLocation":324,"imageIndex":11},{"imageOffset":10892,"symbol":"CVDisplayLink::runIOThread()","symbolLocation":504,"imageIndex":11},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088928,"name":"JUCE Timer","frames":[{"imageOffset":17892,"symbol":"__psynch_cvwait","symbolLocation":8,"imageIndex":0},{"imageOffset":30264,"symbol":"_pthread_cond_wait","symbolLocation":1232,"imageIndex":6},{"imageOffset":5217792,"symbol":"juce::WaitableEvent::wait(int) const","symbolLocation":208,"imageIndex":12},{"imageOffset":5393172,"symbol":"juce::Timer::TimerThread::run()","symbolLocation":132,"imageIndex":12},{"imageOffset":5220320,"symbol":"juce::Thread::threadEntryPoint()","symbolLocation":304,"imageIndex":12},{"imageOffset":5297044,"symbol":"threadEntryProc","symbolLocation":32,"imageIndex":12},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1088929,"name":"tcp_listener","frames":[{"imageOffset":37640,"symbol":"__accept","symbolLocation":8,"imageIndex":0},{"imageOffset":5167892,"symbol":"juce::StreamingSocket::waitForNextConnection() const","symbolLocation":88,"imageIndex":12},{"imageOffset":3953248,"symbol":"tcpconnection_listenthread(_tcpconnection*)","symbolLocation":168,"imageIndex":12},{"imageOffset":3197172,"symbol":"systhread_threadproc","symbolLocation":212,"imageIndex":12},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1089054,"frames":[{"imageOffset":7704,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]},{"id":1089062,"name":"JUCE Timer","frames":[{"imageOffset":17892,"symbol":"__psynch_cvwait","symbolLocation":8,"imageIndex":0},{"imageOffset":30264,"symbol":"_pthread_cond_wait","symbolLocation":1232,"imageIndex":6},{"imageOffset":52064,"symbol":"std::__1::condition_variable::__do_timed_wait(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::system_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >)","symbolLocation":100,"imageIndex":13},{"imageOffset":2471136,"sourceLine":463,"sourceFile":"__mutex_base","symbol":"std::__1::cv_status std::__1::condition_variable::wait_for<long long, std::__1::ratio<1l, 1000000000l> >(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > const&)","imageIndex":14,"symbolLocation":332},{"imageOffset":2470312,"sourceLine":518,"sourceFile":"__mutex_base","symbol":"void std::__1::condition_variable::__do_timed_wait<std::__1::chrono::steady_clock>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >)","imageIndex":14,"symbolLocation":104},{"imageOffset":2469712,"sourceLine":421,"sourceFile":"__mutex_base","symbol":"std::__1::cv_status std::__1::condition_variable::wait_until<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > >(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > > const&)","imageIndex":14,"symbolLocation":132},{"imageOffset":2708088,"sourceLine":433,"sourceFile":"__mutex_base","symbol":"bool std::__1::condition_variable::wait_until<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> >, juce::WaitableEvent::wait(int) const::$_18>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::time_point<std::__1::chrono::steady_clock, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000000000l> > > const&, juce::WaitableEvent::wait(int) const::$_18)","imageIndex":14,"symbolLocation":72},{"imageOffset":2159180,"sourceLine":477,"sourceFile":"__mutex_base","symbol":"bool std::__1::condition_variable::wait_for<long long, std::__1::ratio<1l, 1000l>, juce::WaitableEvent::wait(int) const::$_18>(std::__1::unique_lock<std::__1::mutex>&, std::__1::chrono::duration<long long, std::__1::ratio<1l, 1000l> > const&, juce::WaitableEvent::wait(int) const::$_18)","imageIndex":14,"symbolLocation":132},{"imageOffset":1959692,"sourceLine":43,"sourceFile":"juce_WaitableEvent.cpp","symbol":"juce::WaitableEvent::wait(int) const","imageIndex":14,"symbolLocation":192},{"imageOffset":1968108,"sourceLine":290,"sourceFile":"juce_Thread.cpp","symbol":"juce::Thread::wait(int) const","imageIndex":14,"symbolLocation":36},{"imageOffset":2911832,"sourceLine":89,"sourceFile":"juce_Timer.cpp","symbol":"juce::Timer::TimerThread::run()","imageIndex":14,"symbolLocation":432},{"imageOffset":1963612,"sourceLine":98,"sourceFile":"juce_Thread.cpp","symbol":"juce::Thread::threadEntryPoint()","imageIndex":14,"symbolLocation":332},{"imageOffset":1964816,"sourceLine":120,"sourceFile":"juce_Thread.cpp","symbol":"juce::juce_threadEntryPoint(void*)","imageIndex":14,"symbolLocation":24},{"imageOffset":2453124,"sourceLine":82,"sourceFile":"juce_mac_Threads.mm","symbol":"juce::Thread::createNativeThread(juce::Thread::Priority)::$_16::operator()(void*) const","imageIndex":14,"symbolLocation":44},{"imageOffset":2453068,"sourceLine":76,"sourceFile":"juce_mac_Threads.mm","symbol":"juce::Thread::createNativeThread(juce::Thread::Priority)::$_16::__invoke(void*)","imageIndex":14,"symbolLocation":28},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1089064,"name":"CVDisplayLink","frames":[{"imageOffset":17892,"symbol":"__psynch_cvwait","symbolLocation":8,"imageIndex":0},{"imageOffset":30308,"symbol":"_pthread_cond_wait","symbolLocation":1276,"imageIndex":6},{"imageOffset":14780,"symbol":"CVDisplayLink::waitUntil(unsigned long long)","symbolLocation":324,"imageIndex":11},{"imageOffset":10892,"symbol":"CVDisplayLink::runIOThread()","symbolLocation":504,"imageIndex":11},{"imageOffset":28780,"symbol":"_pthread_start","symbolLocation":148,"imageIndex":6},{"imageOffset":7724,"symbol":"thread_start","symbolLocation":8,"imageIndex":6}]},{"id":1089067,"frames":[{"imageOffset":7704,"symbol":"start_wqthread","symbolLocation":0,"imageIndex":6}]}],
+  "usedImages" : [
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6586736640,
+    "size" : 233468,
+    "uuid" : "6d6644d3-3db3-34c4-b1e3-c675ec5360f0",
+    "path" : "\/usr\/lib\/system\/libsystem_kernel.dylib",
+    "name" : "libsystem_kernel.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6587383808,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.CoreFoundation",
+    "size" : 5079040,
+    "uuid" : "f4ff83fc-e62c-30b4-b3a9-876c8a1fd595",
+    "path" : "\/System\/Library\/Frameworks\/CoreFoundation.framework\/Versions\/A\/CoreFoundation",
+    "name" : "CoreFoundation",
+    "CFBundleVersion" : "1953.1"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6745460736,
+    "CFBundleShortVersionString" : "2.1.1",
+    "CFBundleIdentifier" : "com.apple.HIToolbox",
+    "size" : 3358720,
+    "uuid" : "02b9797f-c47d-30b7-b7b0-802d0d26f31c",
+    "path" : "\/System\/Library\/Frameworks\/Carbon.framework\/Versions\/A\/Frameworks\/HIToolbox.framework\/Versions\/A\/HIToolbox",
+    "name" : "HIToolbox"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6640463872,
+    "CFBundleShortVersionString" : "6.9",
+    "CFBundleIdentifier" : "com.apple.AppKit",
+    "size" : 15761408,
+    "uuid" : "af9f6891-70ad-3c26-af08-b747344892d2",
+    "path" : "\/System\/Library\/Frameworks\/AppKit.framework\/Versions\/C\/AppKit",
+    "name" : "AppKit",
+    "CFBundleVersion" : "2299"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4342693888,
+    "CFBundleShortVersionString" : "11.2.7 (2022-12-08_2509d781e7)",
+    "CFBundleIdentifier" : "com.ableton.live",
+    "size" : 67502080,
+    "uuid" : "52182ddd-487e-31f7-83a8-233e52d7b9d4",
+    "path" : "\/Applications\/Ableton Live 11 Suite.app\/Contents\/MacOS\/Live",
+    "name" : "Live",
+    "CFBundleVersion" : "11.2.7 (2022-12-08_2509d781e7)"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6583656448,
+    "size" : 566448,
+    "uuid" : "1f56ab4e-f398-3a9c-bfba-fbbd17808963",
+    "path" : "\/usr\/lib\/dyld",
+    "name" : "dyld"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6586970112,
+    "size" : 53244,
+    "uuid" : "886caca0-5762-3640-8db2-3fa3b911c062",
+    "path" : "\/usr\/lib\/system\/libsystem_pthread.dylib",
+    "name" : "libsystem_pthread.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6585380864,
+    "size" : 294912,
+    "uuid" : "40c9c98c-00d6-3e8e-9ad3-2ed6cf0d0cfe",
+    "path" : "\/usr\/lib\/system\/libdispatch.dylib",
+    "name" : "libdispatch.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6975721472,
+    "CFBundleShortVersionString" : "2.0",
+    "CFBundleIdentifier" : "com.apple.audio.midi.CoreMIDI",
+    "size" : 471040,
+    "uuid" : "c145596b-cf7a-3936-9393-de2b54049197",
+    "path" : "\/System\/Library\/Frameworks\/CoreMIDI.framework\/Versions\/A\/CoreMIDI",
+    "name" : "CoreMIDI",
+    "CFBundleVersion" : "88"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6742552576,
+    "CFBundleShortVersionString" : "1.0",
+    "CFBundleIdentifier" : "com.apple.audio.caulk",
+    "size" : 172032,
+    "uuid" : "445d1341-52c5-3468-ba85-f01410317744",
+    "path" : "\/System\/Library\/PrivateFrameworks\/caulk.framework\/Versions\/A\/caulk",
+    "name" : "caulk"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6621569024,
+    "CFBundleShortVersionString" : "5.0",
+    "CFBundleIdentifier" : "com.apple.audio.CoreAudio",
+    "size" : 7208960,
+    "uuid" : "ad0eb60a-ba0d-3e1d-9a5b-ddc59e71d77d",
+    "path" : "\/System\/Library\/Frameworks\/CoreAudio.framework\/Versions\/A\/CoreAudio",
+    "name" : "CoreAudio",
+    "CFBundleVersion" : "5.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6719971328,
+    "CFBundleShortVersionString" : "1.8",
+    "CFBundleIdentifier" : "com.apple.CoreVideo",
+    "size" : 401408,
+    "uuid" : "fb6c73bd-5e1f-3e88-b952-caaaed8960c9",
+    "path" : "\/System\/Library\/Frameworks\/CoreVideo.framework\/Versions\/A\/CoreVideo",
+    "name" : "CoreVideo",
+    "CFBundleVersion" : "0.0"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 4966055936,
+    "CFBundleShortVersionString" : " (666)",
+    "CFBundleIdentifier" : "com.cycling.MaxPlugLib",
+    "size" : 12091392,
+    "uuid" : "caaabb28-c220-39c2-a66a-10e378101daf",
+    "path" : "\/Applications\/Ableton Live 11 Suite.app\/Contents\/App-Resources\/Max\/Max.app\/Contents\/Resources\/C74\/support\/MaxPlugLib.bundle\/Contents\/MacOS\/MaxPlugLib",
+    "name" : "MaxPlugLib",
+    "CFBundleVersion" : ""
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64e",
+    "base" : 6586216448,
+    "size" : 421876,
+    "uuid" : "ae8ea4b2-b8fd-33e3-a0af-0b7485ab97c0",
+    "path" : "\/usr\/lib\/libc++.1.dylib",
+    "name" : "libc++.1.dylib"
+  },
+  {
+    "source" : "P",
+    "arch" : "arm64",
+    "base" : 11895095296,
+    "CFBundleShortVersionString" : "1.0.0",
+    "CFBundleIdentifier" : "com.yourcompany.DonutDelay",
+    "size" : 7880704,
+    "uuid" : "7686e8fd-a0df-3b16-aed4-d3525cce6b41",
+    "path" : "\/Users\/USER\/Library\/Audio\/Plug-Ins\/Components\/NewProject.component\/Contents\/MacOS\/NewProject",
+    "name" : "NewProject",
+    "CFBundleVersion" : "1.0.0"
+  },
+  {
+    "size" : 0,
+    "source" : "A",
+    "base" : 0,
+    "uuid" : "00000000-0000-0000-0000-000000000000"
+  }
+],
+  "sharedCache" : {
+  "base" : 6583009280,
+  "size" : 3403612160,
+  "uuid" : "5667eb2d-1398-3b38-afff-a929572d4b88"
+},
+  "vmSummary" : "ReadOnly portion of Libraries: Total=1.5G resident=0K(0%) swapped_out_or_unallocated=1.5G(100%)\nWritable regions: Total=2.1G written=0K(0%) resident=0K(0%) swapped_out=0K(0%) unallocated=2.1G(100%)\n\n                                VIRTUAL   REGION \nREGION TYPE                        SIZE    COUNT (non-coalesced) \n===========                     =======  ======= \nAccelerate framework               256K        2 \nActivity Tracing                   256K        1 \nCG backing stores                 3520K        4 \nCG image                           272K       14 \nColorSync                          624K       29 \nCoreAnimation                      240K       14 \nCoreGraphics                        32K        2 \nCoreServices                       624K        2 \nCoreUI image data                 2176K       15 \nFoundation                          16K        1 \nImage IO                           128K        8 \nKernel Alloc Once                   32K        1 \nMALLOC                           834.5M      101 \nMALLOC guard page                  192K       10 \nMALLOC_LARGE (reserved)           27.0M        2         reserved VM address space (unallocated)\nMALLOC_MEDIUM (reserved)           1.0G       10         reserved VM address space (unallocated)\nMALLOC_NANO (reserved)           128.0M        1         reserved VM address space (unallocated)\nSTACK GUARD                       56.4M       26 \nStack                             21.3M       26 \nVM_ALLOCATE                       27.1M      123 \nVM_ALLOCATE (reserved)             288K        2         reserved VM address space (unallocated)\n__AUTH                            1778K      329 \n__AUTH_CONST                      23.5M      539 \n__CTF                               756        1 \n__DATA                            18.4M      577 \n__DATA_CONST                      37.6M      582 \n__DATA_DIRTY                      1909K      212 \n__FONT_DATA                        2352        1 \n__LINKEDIT                       824.1M       48 \n__OBJC_CONST                      4396K      299 \n__OBJC_RO                         65.1M        1 \n__OBJC_RW                         1981K        1 \n__TEXT                           705.8M      609 \ndyld private memory               1024K        3 \nmapped file                        1.2G       68 \nshared memory                      992K       21 \n===========                     =======  ======= \nTOTAL                              4.9G     3685 \nTOTAL, minus reserved VM space     3.7G     3685 \n",
+  "legacyInfo" : {
+  "threadTriggered" : {
+
+  }
+},
+  "trialInfo" : {
+  "rollouts" : [
+    {
+      "rolloutId" : "62699e1ec1ff2978b47f6c3b",
+      "factorPackIds" : {
+        "SIRI_FIND_MY_CONFIGURATION_FILES" : "631f72d1de559130376df1fb"
+      },
+      "deploymentId" : 240000023
+    },
+    {
+      "rolloutId" : "6112d17137f5d11121dcd4e2",
+      "factorPackIds" : {
+
+      },
+      "deploymentId" : 240000213
+    }
+  ],
+  "experiments" : [
+
+  ]
+}
+}
+
