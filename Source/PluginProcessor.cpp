@@ -94,6 +94,19 @@ void DigiDelayAudioProcessor::changeProgramName (int index, const juce::String& 
 {
 }
 
+bool DigiDelayAudioProcessor::producesMidi() const
+{
+    return false;
+}
+
+bool DigiDelayAudioProcessor::acceptsMidi() const { return false; }
+
+double DigiDelayAudioProcessor::getTailLengthSeconds() const
+{
+    return 0.5; // or the tail length of your plugin's processing, in seconds
+}
+
+
 void DigiDelayAudioProcessor::getStateInformation (juce::MemoryBlock& destData)
 {
 }

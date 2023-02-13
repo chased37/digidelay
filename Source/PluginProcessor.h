@@ -7,6 +7,11 @@ class DigiDelayAudioProcessor  : public juce::AudioProcessor
 public:
     DigiDelayAudioProcessor();
     ~DigiDelayAudioProcessor() override;
+    
+    bool producesMidi() const override;
+    bool acceptsMidi() const override;
+    
+    double getTailLengthSeconds() const override;
 
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
