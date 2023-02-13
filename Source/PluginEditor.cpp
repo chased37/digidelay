@@ -1,40 +1,71 @@
-/*
-  ==============================================================================
-
-    This file contains the basic framework code for a JUCE plugin editor.
-
-  ==============================================================================
-*/
-
-#include "PluginProcessor.h"
 #include "PluginEditor.h"
 
-//==============================================================================
-NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioProcessor& p)
-    : AudioProcessorEditor (&p), audioProcessor (p)
+DigiDelayAudioProcessorEditor::DigiDelayAudioProcessorEditor (DigiDelayAudioProcessor& p)
+    : AudioProcessorEditor (&p), processor (p)
 {
-    // Make sure that before the constructor has finished, you've set the
-    // editor's size to whatever you need it to be.
+    delayTimeSlider.setSliderStyle (juce::Slider::LinearHorizontal);
+    delayTimeSlider.setRange (0.0f, 2000.0f, 1.0f);
+    delayTimeSlider.setValue (processor.delayTimeMs);
+    delayTimeSlider.setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    delayTimeSlider.addListener (this);
+    addAndMakeVisible (delayTimeSlider);
+
+    feedbackSlider.setSliderStyle (juce::Slider::LinearHorizontal);
+    feedbackSlider.setRange (0.0f, 1.0f, 0.01f);
+    feedbackSlider.setValue (processor.feedback);
+    feedbackSlider.setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    feedbackSlider.addListener (this);
+    addAndMakeVisible (feedbackSlider);
+
+    gainSlider.setSliderStyle (juce::Slider::LinearHorizontal);
+    gainSlider.setRange (0.0f, 1.0f, 0.01f);
+    gainSlider.setValue (processor.gain);
+    gainSlider.setTextBoxStyle (juce::Slider::TextBoxBelow, true, 80, 20);
+    gainSlider.addListener (this);
+    addAndMakeVisible (gainSlider);
+
     setSize (400, 300);
 }
 
-NewProjectAudioProcessorEditor::~NewProjectAudioProcessorEditor()
+DigiDelayAudioProcessorEditor::~DigiDelayAudioProcessorEditor()
 {
 }
 
-//==============================================================================
-void NewProjectAudioProcessorEditor::paint (juce::Graphics& g)
+void DigiDelayAudioProcessorEditor::paint (juce::Graphics& g)
 {
-    // (Our component is opaque, so we must completely fill the background with a solid colour)
-    g.fillAll (getLookAndFeel().findColour (juce::ResizableWindow::backgroundColourId));
+    g.fillAll (juce::Colours::black);
 
     g.setColour (juce::Colours::white);
     g.setFont (15.0f);
-    g.drawFittedText ("Hello World!", getLocalBounds(), juce::Justification::centred, 1);
+    g.drawText ("Delay Plugin", getLocalBounds(),
+                juce::Justification::centred, true);
 }
 
-void NewProjectAudioProcessorEditor::resized()
+void DigiDelayAudioProcessorEditor::resized()
 {
-    // This is generally where you'll want to lay out the positions of any
-    // subcomponents in your editor..
+    const int sliderLeft = 20;
+    const int sliderWidth = getWidth() - 2 * sliderLeft;
+    const int sliderTop = 20;
+    const int sliderHeight = 40;
+
+    delayTimeSlider.setBounds (sliderLeft, sliderTop, sliderWidth, sliderHeight);
+    feedbackSlider.setBounds (sliderLeft, sliderTop + 50, sliderWidth, sliderHeight);
+    gainSlider.setBounds (sliderLeft, sliderTop + 100, sliderWidth, sliderHeight);
 }
+
+void DigiDelayAudioProcessorEditor::sliderValueChanged (juce::Slider* slider)
+{
+    if (slider == &delayTimeSlider)
+    {
+        processor.delayTimeMs = delayTimeSlider.getValue();
+    }
+    else if (slider == &feedbackSlider)
+    {
+        processor.feedback = feedbackSlider.getValue();
+    }
+    else if (slider == &gainSlider)
+    {
+        processor.gain = gainSlider.getValue();
+    }
+}
+
